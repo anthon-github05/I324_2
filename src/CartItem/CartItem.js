@@ -8,11 +8,19 @@ module.exports = class CartItem {
 
     //region private attributes
     //TODO Missing private attributs
+    #ArticleId;
+    #Name;
+    #quantity;
+    #price;
     //endregion private attributes
 
     //region public methods
     constructor(articleId, name, quantity, price) {
         //TODO Implement this method
+        this.#ArticleId = articleId;
+        this.#Name = name;
+        this.#quantity = quantity;
+        this.#price = price;
     }
 
     get articleId() {
