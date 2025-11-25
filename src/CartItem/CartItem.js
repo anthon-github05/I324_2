@@ -76,10 +76,12 @@ module.exports = class CartItem {
 
     #validateArticleId(articleId) {
         //TODO Implement this method
+
     }
 
     #validateQuantity(quantity) {
         //TODO Implement this method
+
     }
 
     #validatePrice(price) {
