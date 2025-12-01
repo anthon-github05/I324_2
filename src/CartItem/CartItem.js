@@ -17,10 +17,10 @@ module.exports = class CartItem {
     //region public methods
     constructor(articleId, name, quantity, price) {
         //TODO Implement this method
-        this.#ArticleId = articleId;
-        this.#Name = name;
-        this.#quantity = quantity;
-        this.#price = price;
+        this.#articleId = articleId;
+        this.#name = articleId;
+        this.quantity = quantity;
+        this.price = price;
     }
 
     get articleId() {
@@ -41,7 +41,9 @@ module.exports = class CartItem {
 
     set quantity(value) {
         //TODO Implement this method
-        return this.#quantity = value;
+        if (!this.#validateQuantity(value)){
+            this.#quantity = value;
+        }
     }
 
     get price() {
@@ -51,7 +53,9 @@ module.exports = class CartItem {
 
     set price(value) {
         //TODO Implement this method
-        return this.#price = value;
+        if (!this.#validatePrice(value)){
+            this.#price = value;
+        }
     }
 
     get total() {
@@ -63,23 +67,29 @@ module.exports = class CartItem {
     //region private methods
     set #articleId(value) {
         //TODO Implement this method
-        return this.#articleId = value;
-
-
+        if (!this.#validateArticleId(value)){
+            this.#ArticleId = value;
+        }
     }
 
     set #name(value) {
         //TODO Implement this method
-        return this.#name = value;
+        this.#Name = value;
 
     }
 
     #validateArticleId(articleId) {
         //TODO Implement this method
+        if (!Number.isInteger(articleId) || articleId < 1) {
+            throw new InvalidArticleIdException();
+        }
     }
 
     #validateQuantity(quantity) {
         //TODO Implement this method
+        if (!Number.isInteger(quantity) || quantity < 1) {
+            throw new InvalidQuantityException();
+        }
     }
 
     #validatePrice(price) {
